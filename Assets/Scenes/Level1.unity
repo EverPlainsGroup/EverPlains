@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 464651505}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,10 +708,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &464651504
-BoxCollider2D:
+--- !u!60 &464651504
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -723,7 +723,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00461483, y: 0.6886227}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -733,9 +733,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.34681118, y: 1.2111075}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.23723021, y: 1.101562}
+      - {x: 0.13614462, y: 1.105354}
+      - {x: 0.13637947, y: 1.3171322}
+      - {x: -0.09394202, y: 1.3209997}
+      - {x: -0.09580633, y: 1.1081907}
+      - {x: -0.3423453, y: 1.1058276}
+      - {x: -0.34234512, y: 0.062307633}
+      - {x: 0.2360023, y: 0.0581537}
 --- !u!114 &464651505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,12 +757,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   jumpForce: 4
-  groundCheck: {fileID: 2137239905}
+  feet: {fileID: 2137239905}
   checkRadius: 0.5
   ground:
     serializedVersion: 2
     m_Bits: 1024
-  jumpCountValue: 1
+  extraJumpCountValue: 1
+  rb: {fileID: 464651503}
+  sr: {fileID: 464651500}
+  pc: {fileID: 464651504}
+  animator: {fileID: 464651502}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +820,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.961612
+  orthographic size: 2.748496
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -832,8 +843,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.6, y: -1.18, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1353,7 +1364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750804540713932, guid: ff2321c1e30309840845d6def31b27d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4322891
+      value: -1.463
       objectReference: {fileID: 0}
     - target: {fileID: 4750804540713932, guid: ff2321c1e30309840845d6def31b27d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1399,7 +1410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137239905}
   m_Layer: 0
-  m_Name: Ground Check
+  m_Name: feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
