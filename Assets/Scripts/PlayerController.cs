@@ -1,3 +1,6 @@
+// Sources:
+// https://assetstore.unity.com/packages/2d/characters/hero-knight-pixel-art-165188
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +25,10 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     public PolygonCollider2D pc;
     public Animator animator;
+
+    // For attack loop
+    private int attackCount = 0;
+    public float attackTimer;
 
     void Start()
     {
@@ -54,8 +61,12 @@ public class PlayerController : MonoBehaviour
             animator.SetInteger("AnimState", 0);
         }
     }
+
     void Update()
     {
+        // For attack loop
+        attackTimer += Time.deltaTime;
+
         // Set animator AirSpeedY equal to vertical velocity
         animator.SetFloat("AirSpeedY", rb.velocity.y);
 
@@ -79,6 +90,27 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        // Attack
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (attackTimer > 0.3f) {
+                Attack();
+            }
+        }
+
+        // Block
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Block();
+        }
+
+        // Release Block
+        if (Input.GetKeyUp(KeyCode.K))
+        {
+            animator.SetBool("IdleBlock", false);
+        }
+
     }
 
     // Uses a sensor to detect if the player's "feet"
@@ -122,5 +154,34 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
+    }
+
+    void Attack()
+    {
+        ++attackCount;
+
+        if (attackCount > 3) {
+            attackCount = 1;
+        }
+
+        if (attackTimer > 1.0f)
+        {
+            attackCount = 1;
+        }
+
+        animator.SetTrigger("Attack" + attackCount);
+
+        attackTimer = 0.0f;
+    }
+
+    void Block()
+    {
+        animator.SetTrigger("Block");
+        animator.SetBool("IdleBlock", true);
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 100, 20), "Attack: " + attackCount);
     }
 }
