@@ -33,5 +33,5 @@ The following resources were used to learn various aspects of creating a 2D plat
 
 [*2D Platformer in Unity* video series by Muddy Wolf Games](https://www.youtube.com/playlist?list=PLfX6C2dxVyLw5kerGvTxB-8xqVINe85gw)  
 [*How to Make a 2D Character Controller in Unity* by Blackthornprod](https://www.youtube.com/watch?v=CeXAiaQOzmY)  
-[*Create a 2D Platformer* video series by Unity](https://www.youtube.com/watch?v=j29NgzV8Dw4)
+[*Create a 2D Platformer* video series by Unity](https://www.youtube.com/watch?v=j29NgzV8Dw4)  
 [*MELEE COMBAT in Unity* by Brackeys](https://youtu.be/sPiVz1k-fEs)
