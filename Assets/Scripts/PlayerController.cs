@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     // For attack loop
     private int attackCount = 0;
     public float attackTimer;
+    public GameObject attackPoint;
+
 
     void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         pc = GetComponent<PolygonCollider2D>();
         extraJumpCount = extraJumpCountValue;
+        attackPoint.SetActive(false);
     }
 
     void FixedUpdate()
@@ -94,7 +97,12 @@ public class PlayerController : MonoBehaviour
         // Attack
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (attackTimer > 0.3f) {
+            if (attackTimer > 0.429 && attackCount != 3)
+            {
+                Attack();
+            }
+            else if (attackTimer > 0.571 && attackCount == 3)
+            {
                 Attack();
             }
         }
@@ -160,7 +168,8 @@ public class PlayerController : MonoBehaviour
     {
         ++attackCount;
 
-        if (attackCount > 3) {
+        if (attackCount > 3)
+        {
             attackCount = 1;
         }
 
@@ -170,8 +179,28 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetTrigger("Attack" + attackCount);
+        StartCoroutine(AttackCollision());
 
         attackTimer = 0.0f;
+    }
+
+    IEnumerator AttackCollision()
+    {
+        yield return new WaitForSeconds(.1f);
+        attackPoint.SetActive(true);
+
+        if (attackCount == 3)
+        {
+            attackPoint.GetComponent<CircleCollider2D>().offset = new Vector2(0.15f, 0);
+            yield return new WaitForSeconds(.4f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(.3f);
+        }
+
+        attackPoint.SetActive(false);
+        attackPoint.GetComponent<CircleCollider2D>().offset = new Vector2(0, 0);
     }
 
     void Block()
@@ -182,6 +211,14 @@ public class PlayerController : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), "Attack: " + attackCount);
+        if (isFacingRight)
+        {
+            GUI.Label(new Rect(10, 10, 100, 20), "Facing Right");
+        }
+        else
+        {
+            GUI.Label(new Rect(10, 10, 100, 20), "Facing Left");
+        }
+
     }
 }
