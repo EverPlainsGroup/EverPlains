@@ -14,6 +14,7 @@ public class SlimeController : MonoBehaviour
     public float speed = 1;
     public int maxHP = 50;
     private int currentHP;
+    private bool isFacingRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,16 @@ public class SlimeController : MonoBehaviour
         if (distance < range)
         {
             animator.SetBool("Walk", true);
+
+            if (isFacingRight && target.transform.position.x < transform.position.x)
+            {
+                FlipSlime();
+            }
+            else if (!isFacingRight && target.transform.position.x > transform.position.x)
+            {
+                FlipSlime();
+            }
+
             ChaseTarget();
         }
 
@@ -47,6 +58,7 @@ public class SlimeController : MonoBehaviour
 
     void ChaseTarget()
     {
+
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
@@ -97,5 +109,13 @@ public class SlimeController : MonoBehaviour
 
         // flash red and squish
         StartCoroutine(DamageAnimation());
+     }
+
+    void FlipSlime()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 }
