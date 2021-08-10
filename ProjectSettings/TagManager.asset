@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - Enemies
-  - 
+  - Props
   - Platforms
   - Background
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 4292195257
+    locked: 0
+  - name: Props
+    uniqueID: 2711902225
     locked: 0
   - name: Default
     uniqueID: 0
