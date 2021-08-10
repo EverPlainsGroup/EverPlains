@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 2;
     public float jumpForce = 4;
     private bool isFacingRight = true;
+    public int maxHP = 100;
+    private int currentHP;
+    private bool isColliding = false;
 
     // Variables for checking if player is grounded
     private bool grounded = false;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         pc = GetComponent<PolygonCollider2D>();
         extraJumpCount = extraJumpCountValue;
+        currentHP = maxHP;
         attackPoint.SetActive(false);
     }
 
@@ -207,6 +211,50 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("Block");
         animator.SetBool("IdleBlock", true);
+    }
+
+    IEnumerator DamageAnimation()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.4f);
+
+        if (currentHP > 0)
+        {
+            sr.color = Color.white;
+        }
+
+        isColliding = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            if (isColliding) return;
+            isColliding = true;
+            TakeDamage(35, collision.gameObject);
+        }
+    }
+
+    void TakeDamage(int damage, GameObject target)
+    {
+        currentHP -= damage;
+
+        // knockback
+        if (target.transform.position.x < transform.position.x)
+        {
+            rb.velocity = new Vector2(2 * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-2 * speed, rb.velocity.y);
+        }
+
+        StartCoroutine(DamageAnimation());
     }
 
     void OnGUI()
