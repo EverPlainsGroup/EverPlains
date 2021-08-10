@@ -28,6 +28,7 @@ We want the main focus to be on developing game mechanics and systems. Therefore
 [Hero Knight](https://assetstore.unity.com/packages/2d/characters/hero-knight-pixel-art-165188) - sprites, animations, animation controller  
 [Nature Pixel Art](https://assetstore.unity.com/packages/2d/environments/nature-pixel-art-base-assets-free-151370) - props, tilemap  
 [Monsters_Creatures_Fantasy](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949) - flying eye sprites, animations, animation controller  
+[2D Pixel Item Asset Pack](https://assetstore.unity.com/packages/2d/gui/icons/2d-pixel-item-asset-pack-99645) - potion sprite, gold coin sprite
 
 ### References
 The following resources were used to learn various aspects of creating a 2D platformer in Unity. Some of the code may be adapted in some way. Huge thanks to the many content creators that dedicate their time to teaching others.
