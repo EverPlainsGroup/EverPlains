@@ -27,7 +27,7 @@ We want the main focus to be on developing game mechanics and systems. Therefore
 [Slime Mob](https://assetstore.unity.com/packages/2d/characters/free-pixel-mob-113577) - sprites, animations, animation controller  
 [Hero Knight](https://assetstore.unity.com/packages/2d/characters/hero-knight-pixel-art-165188) - sprites, animations, animation controller  
 [Nature Pixel Art](https://assetstore.unity.com/packages/2d/environments/nature-pixel-art-base-assets-free-151370) - props, tilemap  
-[Monsters_Creatures_Fantasy](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949) - flying eye sprites, animations, animation controller  
+[Pixel Mobs](https://assetstore.unity.com/packages/2d/characters/pixel-mobs-54995) - bat sprite, bat animations, bat animation controller  
 [2D Pixel Item Asset Pack](https://assetstore.unity.com/packages/2d/gui/icons/2d-pixel-item-asset-pack-99645) - potion sprite, gold coin sprite
 
 ### References
