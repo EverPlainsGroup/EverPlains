@@ -10,7 +10,7 @@ public class SlimeController : MonoBehaviour
     public Animator animator;
 
     public Transform target;
-    public float range = 10;
+    public float range = 5;
     public float speed = 1;
     public int maxHP = 50;
     private int currentHP;
@@ -109,7 +109,7 @@ public class SlimeController : MonoBehaviour
 
         // flash red and squish
         StartCoroutine(DamageAnimation());
-     }
+    }
 
     void FlipSlime()
     {
