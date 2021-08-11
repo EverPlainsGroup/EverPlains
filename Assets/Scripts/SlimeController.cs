@@ -15,6 +15,9 @@ public class SlimeController : MonoBehaviour
     public int maxHP = 50;
     private int currentHP;
     private bool isFacingRight = false;
+    public GameObject attackPoint;
+    public float attackRange = 0.5f;
+    public float attackTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +27,13 @@ public class SlimeController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         pc = GetComponent<PolygonCollider2D>();
         currentHP = maxHP;
+        attackPoint.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        attackTimer += Time.deltaTime;
         float distance = Vector3.Distance(target.position, transform.position);
 
         if (distance < range)
@@ -49,11 +54,27 @@ public class SlimeController : MonoBehaviour
 
         animator.SetBool("Walk", false);
 
+        if (distance < attackRange && attackTimer > 1.25)
+        {
+            StartCoroutine(AttackCollision());
+
+            attackTimer = 0.0f;
+        }
+
         if (currentHP <= 0)
         {
             Die();
         }
 
+    }
+
+    IEnumerator AttackCollision()
+    {
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.7f);
+        attackPoint.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        attackPoint.SetActive(false);
     }
 
     void ChaseTarget()
