@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.name == "EnemyAttackPoint")
         {
             if (isColliding) return;
             isColliding = true;
