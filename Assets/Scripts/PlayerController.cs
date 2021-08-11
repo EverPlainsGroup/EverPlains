@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     public float attackTimer;
     public GameObject attackPoint;
 
+    // For block
+    public GameObject shield;
+
 
     void Start()
     {
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
         extraJumpCount = extraJumpCountValue;
         currentHP = maxHP;
         attackPoint.SetActive(false);
+        shield.SetActive(false);
     }
 
     void FixedUpdate()
@@ -114,6 +118,7 @@ public class PlayerController : MonoBehaviour
         // Block
         if (Input.GetKeyDown(KeyCode.K))
         {
+            shield.SetActive(true);
             Block();
         }
 
@@ -121,6 +126,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.K))
         {
             animator.SetBool("IdleBlock", false);
+            shield.SetActive(false);
         }
 
     }
