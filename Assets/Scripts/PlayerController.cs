@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     public int maxHP = 100;
     private int currentHP;
+    public int maxMana = 100;
+    private int currentMana;
+    private int currentGold;
     private bool isColliding = false;
 
     // Variables for checking if player is grounded
@@ -46,6 +49,7 @@ public class PlayerController : MonoBehaviour
         pc = GetComponent<PolygonCollider2D>();
         extraJumpCount = extraJumpCountValue;
         currentHP = maxHP;
+        currentMana = 0;
         attackPoint.SetActive(false);
         shield.SetActive(false);
     }
@@ -128,7 +132,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
         }
-
     }
 
     // Uses a sensor to detect if the player's "feet"
@@ -244,6 +247,17 @@ public class PlayerController : MonoBehaviour
             isColliding = true;
             TakeDamage(35, collision.gameObject);
         }
+
+        else if (collision.transform.tag == "Mana")
+        {
+            Destroy(collision.gameObject);
+            GainMana();
+        }
+
+        else if (collision.transform.tag == "Gold")
+        {
+            GainGold();
+        }
     }
 
     void TakeDamage(int damage, GameObject target)
@@ -263,16 +277,26 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DamageAnimation());
     }
 
-    void OnGUI()
+    void GainMana()
     {
-        if (isFacingRight)
+        if (currentMana < maxMana)
         {
-            GUI.Label(new Rect(10, 10, 100, 20), "Facing Right");
-        }
-        else
-        {
-            GUI.Label(new Rect(10, 10, 100, 20), "Facing Left");
+            currentMana += 25;
         }
 
+        if (currentMana > maxMana)
+        {
+            currentMana = 100;
+        }
+    }
+
+    void GainGold()
+    {
+        currentGold += 1;
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 100, 20), "Mana: " + currentMana);
     }
 }
