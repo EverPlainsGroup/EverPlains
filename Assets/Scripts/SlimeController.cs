@@ -18,6 +18,7 @@ public class SlimeController : MonoBehaviour
     public GameObject attackPoint;
     public float attackRange = 0.5f;
     public float attackTimer;
+    public Rigidbody2D goldCoin;
 
     // Start is called before the first frame update
     void Start()
@@ -79,14 +80,29 @@ public class SlimeController : MonoBehaviour
 
     void ChaseTarget()
     {
-
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
     void Die()
     {
+        DropGold();
         this.enabled = false;
         pc.enabled = false;
+    }
+
+    void DropGold()
+    {
+        int rand = Random.Range(1, 6);
+        Vector2 randDirection;
+        int randSpeed;
+
+        for (int i = 0; i < rand; ++i)
+        {
+            randSpeed = Random.Range(100, 200);
+            randDirection = Random.insideUnitCircle.normalized;
+            Rigidbody2D coin = Instantiate(goldCoin, transform.position, transform.rotation);
+            coin.AddRelativeForce(randDirection * 200);
+        }
     }
 
     IEnumerator DamageAnimation()

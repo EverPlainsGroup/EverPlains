@@ -256,6 +256,7 @@ public class PlayerController : MonoBehaviour
 
         else if (collision.transform.tag == "Gold")
         {
+            Destroy(collision.gameObject);
             GainGold();
         }
     }
@@ -298,5 +299,6 @@ public class PlayerController : MonoBehaviour
     void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20), "Mana: " + currentMana);
+        GUI.Label(new Rect(10, 50, 100, 20), "Gold: " + currentGold);
     }
 }

@@ -18,6 +18,7 @@ public class BatController : MonoBehaviour
     public GameObject attackPoint;
     public float attackRange = 3;
     public float attackTimer;
+    public Rigidbody2D goldCoin;
 
     // Start is called before the first frame update
     void Start()
@@ -88,9 +89,25 @@ public class BatController : MonoBehaviour
 
     void Die()
     {
+        DropGold();
         rb.gravityScale = 1;
         this.enabled = false;
         pc.enabled = false;
+    }
+
+    void DropGold()
+    {
+        int rand = Random.Range(1, 6);
+        Vector2 randDirection;
+        int randSpeed;
+
+        for (int i = 0; i < rand; ++i)
+        {
+            randSpeed = Random.Range(100, 200);
+            randDirection = Random.insideUnitCircle.normalized;
+            Rigidbody2D coin = Instantiate(goldCoin, transform.position, transform.rotation);
+            coin.AddRelativeForce(randDirection * 200);
+        }
     }
 
     IEnumerator DamageAnimation()

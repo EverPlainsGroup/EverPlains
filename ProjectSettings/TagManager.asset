@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mana
+  - Gold
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerAttack
   - Water
   - UI
   - Player
