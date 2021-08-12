@@ -298,7 +298,8 @@ public class PlayerController : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 20), "Mana: " + currentMana);
-        GUI.Label(new Rect(10, 50, 100, 20), "Gold: " + currentGold);
+        GUI.Label(new Rect(10, 10, 100, 20), "HP: " + currentHP);
+        GUI.Label(new Rect(10, 40, 100, 20), "Gold: " + currentGold);
+        GUI.Label(new Rect(10, 70, 100, 20), "Mana: " + currentMana);
     }
 }

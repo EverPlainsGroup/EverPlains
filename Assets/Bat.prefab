@@ -190,7 +190,7 @@ MonoBehaviour:
   sr: {fileID: 5068160458247839067}
   pc: {fileID: 5068160458247839068}
   animator: {fileID: 5068160458247839065}
-  target: {fileID: 0}
+  target: {fileID: 5370389917481221441, guid: 6878578fb228abe499863627a23ee1ae, type: 3}
   range: 5
   speed: 1
   maxHP: 50
