@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mana
+  - Gold
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerAttack
   - Water
   - UI
   - Player
@@ -18,10 +20,10 @@ TagManager:
   - Platforms
   - Background
   - 
+  - Shield
   - 
-  - 
-  - 
-  - 
+  - Mana
+  - Gold
   - 
   - 
   - 
