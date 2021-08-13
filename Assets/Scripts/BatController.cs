@@ -16,7 +16,7 @@ public class BatController : MonoBehaviour
     private int currentHP;
     private bool isFacingRight = false;
     public GameObject attackPoint;
-    public float attackRange = 3;
+    public float attackRange = 2;
     public float attackTimer;
     public Rigidbody2D goldCoin;
 
@@ -70,7 +70,7 @@ public class BatController : MonoBehaviour
     {
         attackPoint.SetActive(true);
         animator.SetTrigger("Attack");
-        transform.position = Vector2.MoveTowards(transform.position, target.position, (speed + 1) * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, (speed + 0.5f) * Time.deltaTime);
         yield return new WaitForSeconds(0.5f);
         attackPoint.SetActive(false);
         transform.position = Vector2.MoveTowards(transform.position, target.position, -1 * (speed + 1) * Time.deltaTime);

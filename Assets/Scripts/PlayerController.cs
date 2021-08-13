@@ -4,9 +4,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody2D rb;
+    public SpriteRenderer sr;
+    public PolygonCollider2D pc;
+    public Animator animator;
+
     public float speed = 2;
     public float jumpForce = 4;
     private bool isFacingRight = true;
@@ -17,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private int currentGold;
     private bool isColliding = false;
 
-    // Variables for checking if player is grounded
+    // For checking if player is grounded
     private bool grounded = false;
     public Transform feet;
     public float checkRadius;
@@ -27,11 +33,6 @@ public class PlayerController : MonoBehaviour
     private int extraJumpCount;
     public int extraJumpCountValue = 1;
 
-    public Rigidbody2D rb;
-    public SpriteRenderer sr;
-    public PolygonCollider2D pc;
-    public Animator animator;
-
     // For attack loop
     private int attackCount = 0;
     public float attackTimer;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     // For block
     public GameObject shield;
+    private bool isBlocking = false;
 
 
     void Start()
@@ -56,14 +58,14 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isBlocking)
         {
             if (isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
             animator.SetInteger("AnimState", 1);
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && !isBlocking)
         {
             if (!isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -82,10 +84,10 @@ public class PlayerController : MonoBehaviour
         // For attack loop
         attackTimer += Time.deltaTime;
 
-        // Set animator AirSpeedY equal to vertical velocity
+        // For player falling animation
         animator.SetFloat("AirSpeedY", rb.velocity.y);
 
-        // Check if character just landed on the ground
+        // Check if player landed on the ground
         if (!grounded && IsGrounded())
         {
             grounded = true;
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
             extraJumpCount = extraJumpCountValue;
         }
 
-        // Check if character just started falling
+        // Check if player is falling
         if (grounded && !IsGrounded())
         {
             grounded = false;
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isBlocking)
         {
             Jump();
         }
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
         // Block
         if (Input.GetKeyDown(KeyCode.K))
         {
+            isBlocking = true;
             shield.SetActive(true);
             Block();
         }
@@ -129,9 +132,21 @@ public class PlayerController : MonoBehaviour
         // Release Block
         if (Input.GetKeyUp(KeyCode.K))
         {
+            isBlocking = false;
             animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
         }
+
+        // Death
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     // Uses a sensor to detect if the player's "feet"
