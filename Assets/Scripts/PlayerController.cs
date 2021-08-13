@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -142,6 +144,11 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        transform.position = GameObject.FindWithTag("StartPos").transform.position;
     }
 
     void Die()
