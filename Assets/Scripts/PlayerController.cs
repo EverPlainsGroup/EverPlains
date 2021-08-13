@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     // For block
     public GameObject shield;
+    private bool isBlocking = false;
 
 
     void Start()
@@ -56,14 +57,14 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !isBlocking)
         {
             if (isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
             animator.SetInteger("AnimState", 1);
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && !isBlocking)
         {
             if (!isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(speed, rb.velocity.y);
@@ -82,10 +83,10 @@ public class PlayerController : MonoBehaviour
         // For attack loop
         attackTimer += Time.deltaTime;
 
-        // Set animator AirSpeedY equal to vertical velocity
+        // For player falling animation
         animator.SetFloat("AirSpeedY", rb.velocity.y);
 
-        // Check if character just landed on the ground
+        // Check if player landed on the ground
         if (!grounded && IsGrounded())
         {
             grounded = true;
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
             extraJumpCount = extraJumpCountValue;
         }
 
-        // Check if character just started falling
+        // Check if player is falling
         if (grounded && !IsGrounded())
         {
             grounded = false;
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isBlocking)
         {
             Jump();
         }
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour
         // Block
         if (Input.GetKeyDown(KeyCode.K))
         {
+            isBlocking = true;
             shield.SetActive(true);
             Block();
         }
@@ -129,6 +131,7 @@ public class PlayerController : MonoBehaviour
         // Release Block
         if (Input.GetKeyUp(KeyCode.K))
         {
+            isBlocking = false;
             animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
         }
