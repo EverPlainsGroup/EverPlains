@@ -4,9 +4,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody2D rb;
+    public SpriteRenderer sr;
+    public PolygonCollider2D pc;
+    public Animator animator;
+
     public float speed = 2;
     public float jumpForce = 4;
     private bool isFacingRight = true;
@@ -17,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private int currentGold;
     private bool isColliding = false;
 
-    // Variables for checking if player is grounded
+    // For checking if player is grounded
     private bool grounded = false;
     public Transform feet;
     public float checkRadius;
@@ -26,11 +32,6 @@ public class PlayerController : MonoBehaviour
     // Jump count
     private int extraJumpCount;
     public int extraJumpCountValue = 1;
-
-    public Rigidbody2D rb;
-    public SpriteRenderer sr;
-    public PolygonCollider2D pc;
-    public Animator animator;
 
     // For attack loop
     private int attackCount = 0;
@@ -135,6 +136,17 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
         }
+
+        // Death
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     // Uses a sensor to detect if the player's "feet"
