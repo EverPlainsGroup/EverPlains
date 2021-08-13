@@ -59,9 +59,7 @@ public class SlimeController : MonoBehaviour
 
         if (distance < attackRange && attackTimer > 1.25)
         {
-            Debug.Log("ATTACK RANGE");
             StartCoroutine(AttackCollision());
-
             attackTimer = 0.0f;
         }
 
@@ -109,8 +107,9 @@ public class SlimeController : MonoBehaviour
     }
 
     IEnumerator DamageAnimation()
-    {
-        transform.localScale = new Vector2(1, 2.5f);
+    {   
+        var originalScale = transform.localScale;
+        transform.localScale = new Vector2(0.5f * originalScale.x, originalScale.y);
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.white;
@@ -121,7 +120,7 @@ public class SlimeController : MonoBehaviour
         if (currentHP > 0)
         {
             sr.color = Color.white;
-            transform.localScale = new Vector2(2.5f, 2.5f);
+            transform.localScale = originalScale;
         }
     }
 
