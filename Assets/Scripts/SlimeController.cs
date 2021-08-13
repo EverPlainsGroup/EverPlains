@@ -19,6 +19,7 @@ public class SlimeController : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackTimer;
     public Rigidbody2D goldCoin;
+    public float distance;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class SlimeController : MonoBehaviour
     void Update()
     {
         attackTimer += Time.deltaTime;
-        float distance = Vector3.Distance(target.position, transform.position);
+        distance = Vector2.Distance(target.position, transform.position);
 
         if (distance < range)
         {
@@ -58,6 +59,7 @@ public class SlimeController : MonoBehaviour
 
         if (distance < attackRange && attackTimer > 1.25)
         {
+            Debug.Log("ATTACK RANGE");
             StartCoroutine(AttackCollision());
 
             attackTimer = 0.0f;
