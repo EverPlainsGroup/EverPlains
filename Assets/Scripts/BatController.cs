@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BatController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class BatController : MonoBehaviour
     public PolygonCollider2D pc;
     public Animator animator;
 
-    public Transform target;
+    private Transform target;
     public float range = 5;
     public float speed = 1;
     public int maxHP = 50;
@@ -23,6 +24,7 @@ public class BatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -34,6 +36,7 @@ public class BatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        target = GameObject.FindWithTag("Player").transform;
         attackTimer += Time.deltaTime;
         float distance = Vector3.Distance(target.position, transform.position);
 
@@ -64,6 +67,11 @@ public class BatController : MonoBehaviour
         {
             Die();
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     IEnumerator AttackMovement()

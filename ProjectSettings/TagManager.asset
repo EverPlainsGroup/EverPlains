@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mana
   - Gold
+  - StartPos
   layers:
   - Default
   - TransparentFX

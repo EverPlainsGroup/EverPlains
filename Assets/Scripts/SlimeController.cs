@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SlimeController : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class SlimeController : MonoBehaviour
     public SpriteRenderer sr;
     public PolygonCollider2D pc;
     public Animator animator;
-
     public Transform target;
     public float range = 5;
     public float speed = 1;
@@ -23,6 +23,7 @@ public class SlimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -41,11 +42,11 @@ public class SlimeController : MonoBehaviour
         {
             animator.SetBool("Walk", true);
 
-            if (isFacingRight && target.transform.position.x < transform.position.x)
+            if (isFacingRight && target.position.x < transform.position.x)
             {
                 FlipSlime();
             }
-            else if (!isFacingRight && target.transform.position.x > transform.position.x)
+            else if (!isFacingRight && target.position.x > transform.position.x)
             {
                 FlipSlime();
             }
@@ -135,7 +136,7 @@ public class SlimeController : MonoBehaviour
         currentHP -= damage;
 
         // knockback
-        if (target.transform.position.x < transform.position.x)
+        if (target.position.x < transform.position.x)
         {
             rb.velocity = new Vector2(5 * speed, rb.velocity.y);
         }
