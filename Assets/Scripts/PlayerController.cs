@@ -154,6 +154,8 @@ public class PlayerController : MonoBehaviour
     void Die()
     {
         SceneManager.LoadScene("GameOver");
+        GameObject.Destroy(this.gameObject);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Uses a sensor to detect if the player's "feet"

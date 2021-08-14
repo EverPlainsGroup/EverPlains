@@ -19,6 +19,7 @@ public class SlimeController : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackTimer;
     public Rigidbody2D goldCoin;
+    public float distance;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class SlimeController : MonoBehaviour
     void Update()
     {
         attackTimer += Time.deltaTime;
-        float distance = Vector3.Distance(target.position, transform.position);
+        distance = Vector2.Distance(target.position, transform.position);
 
         if (distance < range)
         {
@@ -59,7 +60,6 @@ public class SlimeController : MonoBehaviour
         if (distance < attackRange && attackTimer > 1.25)
         {
             StartCoroutine(AttackCollision());
-
             attackTimer = 0.0f;
         }
 
@@ -107,8 +107,9 @@ public class SlimeController : MonoBehaviour
     }
 
     IEnumerator DamageAnimation()
-    {
-        transform.localScale = new Vector2(1, 2.5f);
+    {   
+        var originalScale = transform.localScale;
+        transform.localScale = new Vector2(0.5f * originalScale.x, originalScale.y);
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.white;
@@ -119,7 +120,7 @@ public class SlimeController : MonoBehaviour
         if (currentHP > 0)
         {
             sr.color = Color.white;
-            transform.localScale = new Vector2(2.5f, 2.5f);
+            transform.localScale = originalScale;
         }
     }
 
