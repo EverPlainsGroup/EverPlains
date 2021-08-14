@@ -24,9 +24,10 @@ The roadmap can be viewed at: https://app.gitkraken.com/glo/board/YOOYqEEZ3QASG6
 
 #### Release Downloads
 [Windows](https://github.com/EverPlainsGroup/EverPlains/releases/download/v0.1-alpha/EverPlains-windows.zip)
+
 [Mac (untested)](https://github.com/EverPlainsGroup/EverPlains/releases/download/v0.1-alpha/EverPlains-mac.app.zip)
 
-#### Checkout and download instructions
+#### Checkout instructions
 1. Fork this repository
 2. Clone the forked repository
 3. Use the following git command to make your own branch with your changes and then switch to that branch: git checkout -b name-of-your-branch
@@ -82,6 +83,6 @@ The following resources were used to learn various aspects of creating a 2D plat
 [*MELEE COMBAT in Unity* by Brackeys](https://youtu.be/sPiVz1k-fEs)  
 [*2D Game Dev Tutorial - Melee Attacking in Unity* by Lost Relic Games](https://www.youtube.com/watch?v=KamdeKs6eKo)
 
-### License
+## License
 The license can be found in [LICENSE](https://github.com/EverPlainsGroup/EverPlains/blob/main/LICENSE)  in the root directory.
 
