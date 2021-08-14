@@ -1,8 +1,9 @@
 # EverPlains
-### Jonathan Rivera and Tram Vuong
+## Contributors
+Jonathan Rivera and Tram Vuong
 
-#### Description
-Our project is a 2D platformer/side scroller created in Unity, which uses C#. The main components of the game are described below.  
+## Description
+EverPlains is a 2D platformer/side scroller created in Unity, which uses C#. The main components of the game are described below.  
 
 ##### Player
 The player can run left and right, double jump, and block. Currently, the player will have a sword slash basic attack and move across the screen to destroy enemies.
@@ -19,20 +20,34 @@ Initially, we wanted to have a projectile special attack that would travel acros
 ## Roadmap
 The roadmap can be viewed at: https://app.gitkraken.com/glo/board/YOOYqEEZ3QASG6vP
 
-## How to build, install, and run
+## How to build, install, and run the project
 
-### Checkout and download instructions
+#### Release Downloads
+[Windows](https://github.com/EverPlainsGroup/EverPlains/releases/download/v0.1-alpha/EverPlains-windows.zip)
+[Mac (untested)](https://github.com/EverPlainsGroup/EverPlains/releases/download/v0.1-alpha/EverPlains-mac.app.zip)
 
-### Prerequisites for build
+#### Checkout and download instructions
+1. Fork this repository
+2. Clone the forked repository
+3. Use the following git command to make your own branch with your changes and then switch to that branch: git checkout -b name-of-your-branch
+   Example: git checkout -b feature/new-special-attack
 
-### Installation instructions
+#### Prerequisites for build
+
+    Unity version 2020.3.14f1 or newer
+
+#### Installation instructions
+ - Download [Unity Hub](https://unity3d.com/get-unity/download)
+ - In Unity Hub, install version 2020.3.14f1 or newer
+ - In Unity Hub > Projects, hit the "Open" button and select the project folder
 
 ## Example screenshot
+![Slashing some slimes](https://i.gyazo.com/3c952bebe560c1c2885d76e6af599ad4.png)
 
 ## How to play
-- Control the hero using - <-- A    D -->
-- Jump - Space bar
-- Double jump - Space bar x 2
+- Move Left - A
+- Move Right - D
+- Jump - Space
 - Attack - J
 - Block - K
 
@@ -40,9 +55,12 @@ The roadmap can be viewed at: https://app.gitkraken.com/glo/board/YOOYqEEZ3QASG6
 The following are additional requirements for CS461/561 Open Source course taught by Bart Massey.
 
 ### Project video
-The project video can be found [here] ()
+The project video can be found [here](https://youtu.be/8OcopNqZeU4).
 
 ### Work summary/member contributions
+
+ - Tram Vuong - enemies, level design, level transitions, game over
+ - Jonathan Rivera - player, collisions, hud, camera, victory
 
 ## Acknowledgements
 
@@ -65,5 +83,5 @@ The following resources were used to learn various aspects of creating a 2D plat
 [*2D Game Dev Tutorial - Melee Attacking in Unity* by Lost Relic Games](https://www.youtube.com/watch?v=KamdeKs6eKo)
 
 ### License
-The license can be found at the LICENSE text file in the root directory
+The license can be found in [LICENSE](https://github.com/EverPlainsGroup/EverPlains/blob/main/LICENSE)  in the root directory.
 
