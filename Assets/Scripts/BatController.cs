@@ -1,50 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BatController : EnemyController {
   public BatController() : base() {
       attackRange = 2;
   } 
-  // Start is called before the first frame update
-//   void Start() {
-//     target = GameObject.FindWithTag("Player").transform;
-//     animator = GetComponent<Animator>();
-//     rb = GetComponent<Rigidbody2D>();
-//     sr = GetComponent<SpriteRenderer>();
-//     pc = GetComponent<PolygonCollider2D>();
-//     currentHP = maxHP;
-//     attackPoint.SetActive(false);
-//   }
-
-  // Update is called once per frame
-//   void Update() {
-//     attackTimer += Time.deltaTime;
-//     distance = Vector2.Distance(target.position, transform.position);
-
-//     if (distance < range) {
-//       animator.SetBool("Walk", true);
-
-//       if (GetIsFacingRight() && target.transform.position.x < transform.position.x) {
-//         Flip();
-//       } else if (!GetIsFacingRight() && target.transform.position.x > transform.position.x) {
-//         Flip();
-//       }
-
-//       ChaseTarget();
-//     }
-
-//     animator.SetBool("Walk", false);
-
-//     if (distance < attackRange) {
-//       StartCoroutine(AttackMovement());
-//     }
-
-//     if (currentHP <= 0) {
-//       Die();
-//     }
-//   }
 
   public override void OrchestrateAttack() {
     if (distance < attackRange) {
@@ -66,27 +26,10 @@ public class BatController : EnemyController {
     StartCoroutine(AttackMovement());
   }
 
-//   void ChaseTarget() {
-//     transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-//   }
-
   public override void Die() {
     rb.gravityScale = 1;
     base.Die();
   }
-
-//   void DropGold() {
-//     int rand = Random.Range(1, 6);
-//     Vector2 randDirection;
-//     int randSpeed;
-
-//     for (int i = 0; i < rand; ++i) {
-//       randSpeed = Random.Range(100, 200);
-//       randDirection = Random.insideUnitCircle.normalized;
-//       Rigidbody2D coin = Instantiate(goldCoin, transform.position, transform.rotation);
-//       coin.AddRelativeForce(randDirection * 200);
-//     }
-//   }
 
   public override IEnumerator DamageAnimation() {
     sr.color = Color.red;
@@ -102,25 +45,12 @@ public class BatController : EnemyController {
 
     rb.velocity = new Vector2(0 * speed, rb.velocity.y);
   }
-
-//   void OnTriggerEnter2D(Collider2D collision) {
-//     if (collision.gameObject.name == "AttackPoint") {
-//       TakeDamage(25);
-//     }
-//   }
-
-//   public override void TakeDamage(int damage) {
-    // currentHP -= damage;
-
-    public override void KnockBack() {
-        // knockback
-      if (target.transform.position.x < transform.position.x) {
-        rb.velocity = new Vector2(3 * speed, rb.velocity.y);
-      } else {
-        rb.velocity = new Vector2(-3 * speed, rb.velocity.y);
-      }    
-    }
-
-    // // flash red and squish
-    // StartCoroutine(DamageAnimation());
+  public override void KnockBack() {
+      // knockback
+    if (target.transform.position.x < transform.position.x) {
+      rb.velocity = new Vector2(3 * speed, rb.velocity.y);
+    } else {
+      rb.velocity = new Vector2(-3 * speed, rb.velocity.y);
+    }    
+  }
 }
