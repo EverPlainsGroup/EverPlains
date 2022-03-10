@@ -41,7 +41,7 @@ public class BatController : EnemyController {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.4f);
 
-        if (!IsHPHighEnough()) {
+        if (IsHPHighEnough()) {
             sr.color = Color.white;
         }
 
