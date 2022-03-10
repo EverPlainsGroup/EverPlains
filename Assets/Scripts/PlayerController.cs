@@ -41,6 +41,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject shield;
     private bool isBlocking = false;
 
+    // Input keys
+    public KeyCode moveLeftKey = KeyCode.A;
+    public KeyCode moveRightKey = KeyCode.D;
+    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode attackKey = KeyCode.J;
+    public KeyCode blockKey = KeyCode.K;
+
 
     void Start() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -57,11 +64,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (Input.GetKey(KeyCode.A) && !isBlocking) {
+        if (Input.GetKey(moveLeftKey) && !isBlocking) {
             if (isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(-1 * speed, rb.velocity.y);
             animator.SetInteger("AnimState", 1);
-        } else if (Input.GetKey(KeyCode.D) && !isBlocking) {
+        } else if (Input.GetKey(moveRightKey) && !isBlocking) {
             if (!isFacingRight) FlipPlayer();
             rb.velocity = new Vector2(speed, rb.velocity.y);
             animator.SetInteger("AnimState", 1);
@@ -94,12 +101,12 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Jump
-        if (Input.GetKeyDown(KeyCode.Space) && !isBlocking) {
+        if (Input.GetKeyDown(jumpKey) && !isBlocking) {
             Jump();
         }
 
         // Attack
-        if (Input.GetKeyDown(KeyCode.J)) {
+        if (Input.GetKeyDown(attackKey)) {
             if (attackTimer > 0.429 && attackCount != 3) {
                 Attack();
             } else if (attackTimer > 0.571 && attackCount == 3) {
@@ -108,14 +115,14 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Block
-        if (Input.GetKeyDown(KeyCode.K)) {
+        if (Input.GetKeyDown(blockKey)) {
             isBlocking = true;
             shield.SetActive(true);
             Block();
         }
 
         // Release Block
-        if (Input.GetKeyUp(KeyCode.K)) {
+        if (Input.GetKeyUp(blockKey)) {
             isBlocking = false;
             animator.SetBool("IdleBlock", false);
             shield.SetActive(false);
