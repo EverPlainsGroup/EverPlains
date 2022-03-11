@@ -1,8 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class for Mummy enemy.
+/// </summary>
 public class MummyController : EnemyController
 {
+    /// <summary>
+    /// Constructor for MummyController.
+    /// </summary>
     public MummyController() : base() {
         attackRange = 2;
         range = 10;
@@ -10,6 +16,9 @@ public class MummyController : EnemyController
         maxHP = 80;
     }
 
+    /// <summary>
+    /// Attack movement wrapper.
+    /// </summary>
     public override void OrchestrateAttack() {
         if (distance < attackRange && attackTimer > 1.25) {
             StartCoroutine(AttackMovement());
@@ -17,6 +26,10 @@ public class MummyController : EnemyController
         }
     }
 
+    /// <summary>
+    /// Sets attack movement in motion, includes wait times.
+    /// </summary>
+    /// <returns>return IEnumerator</returns>
     public override IEnumerator AttackMovement() {
         float originalSpeed = speed;
         speed = 1.0f;
@@ -29,6 +42,10 @@ public class MummyController : EnemyController
         speed = originalSpeed;
     }
 
+    /// <summary>
+    /// Manages damage animation visuals and timings.
+    /// </summary>
+    /// <returns>return IEnumerator</returns>
     public override IEnumerator DamageAnimation() {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);

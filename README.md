@@ -42,6 +42,9 @@ The roadmap can be viewed at: https://app.gitkraken.com/glo/board/YOOYqEEZ3QASG6
  - In Unity Hub, install version 2020.3.14f1 or newer
  - In Unity Hub > Projects, hit the "Open" button and select the project folder
 
+#### Documentation
+This project uses Doxygen for documentation. Download Doxygen [here](https://www.doxygen.nl/index.html).
+
 ## Example screenshot
 ![Slashing some slimes](https://i.gyazo.com/3c952bebe560c1c2885d76e6af599ad4.png)
 

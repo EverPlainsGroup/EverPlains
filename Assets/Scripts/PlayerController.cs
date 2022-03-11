@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Class that controls the player and player movement.
+/// </summary>
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb;
     public SpriteRenderer sr;
@@ -22,7 +25,10 @@ public class PlayerController : MonoBehaviour {
     private int currentGold;
     private bool isColliding = false;
 
-    // For checking if player is grounded
+    /// <summary>
+    /// For checking if player is grounded
+    /// (as opposed to in the air)
+    /// </summary>
     private bool grounded = false;
     public Transform feet;
     public float checkRadius;
@@ -48,7 +54,9 @@ public class PlayerController : MonoBehaviour {
     public KeyCode attackKey = KeyCode.J;
     public KeyCode blockKey = KeyCode.K;
 
-
+    /// <summary>
+    /// Initiates the player object.
+    /// </summary>
     void Start() {
         SceneManager.sceneLoaded += OnSceneLoaded;
         DontDestroyOnLoad(gameObject);
@@ -80,6 +88,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Manages what happens each frame in terms of player
+    /// movement.
+    /// </summary>
     void Update() {
         // For attack loop
         attackTimer += Time.deltaTime;
@@ -138,14 +150,20 @@ public class PlayerController : MonoBehaviour {
         transform.position = GameObject.FindWithTag("StartPos").transform.position;
     }
 
+    /// <summary>
+    /// Function that "cleans up" when the player dies.
+    /// </summary>
     void Die() {
         SceneManager.LoadScene("GameOver");
         GameObject.Destroy(this.gameObject);
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Uses a sensor to detect if the player's "feet"
-    // are touching the ground
+    /// <summary>
+    /// Uses a sensor to detect if the player's "feet"
+    /// are touching the ground
+    /// </summary>
+    /// <returns>return a boolean</returns>
     public bool IsGrounded() {
         Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, checkRadius, ground);
 
@@ -156,7 +174,9 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Flips the Player object, including all children
+    /// <summary>
+    /// Flips the Player object, including all children
+    /// </summary>
     void FlipPlayer() {
         isFacingRight = !isFacingRight;
         Vector3 scaler = transform.localScale;
@@ -193,6 +213,10 @@ public class PlayerController : MonoBehaviour {
         attackTimer = 0.0f;
     }
 
+    /// <summary>
+    /// Manages attack collision.
+    /// </summary>
+    /// <returns>return IEnumerator</returns>
     IEnumerator AttackCollision() {
         yield return new WaitForSeconds(.1f);
         attackPoint.SetActive(true);
@@ -213,6 +237,10 @@ public class PlayerController : MonoBehaviour {
         animator.SetBool("IdleBlock", true);
     }
 
+    /// <summary>
+    /// Controls what happens when the player takes damage.
+    /// </summary>
+    /// <returns>return an IEnumerator</returns>
     IEnumerator DamageAnimation() {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
@@ -269,6 +297,9 @@ public class PlayerController : MonoBehaviour {
         currentGold += 1;
     }
 
+    /// <summary>
+    /// Displays current stats.
+    /// </summary>
     void OnGUI() {
         GUI.Label(new Rect(10, 10, 100, 20), "HP: " + currentHP);
         GUI.Label(new Rect(10, 40, 100, 20), "Gold: " + currentGold);

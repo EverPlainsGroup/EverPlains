@@ -1,6 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class for Enemy Controller, which is the parent 
+/// class for all enemies in the game.
+/// </summary>
 public class EnemyController : MonoBehaviour {
     public Rigidbody2D rb;
     public SpriteRenderer sr;
@@ -18,6 +22,9 @@ public class EnemyController : MonoBehaviour {
     public float distance;
     public float attackRange;
 
+    /// <summary>
+    /// Constructor for EnemyController class.
+    /// </summary>
     public EnemyController() {
         range = 5;
         speed = 1;
@@ -25,6 +32,10 @@ public class EnemyController : MonoBehaviour {
         isFacingRight = false;
     }
 
+    /// <summary>
+    /// Getter and setter for facingRight.
+    /// </summary>
+    /// <returns>return a boolean</returns>
     public bool GetIsFacingRight() {
         return isFacingRight;
     }
@@ -33,6 +44,10 @@ public class EnemyController : MonoBehaviour {
         isFacingRight = facingRight;
     }
 
+    /// <summary>
+    /// Checks if HP is high enough.
+    /// </summary>
+    /// <returns>return a boolean</returns>
     public bool IsHPHighEnough() {
         if (currentHP > 0)
             return true;
@@ -40,7 +55,9 @@ public class EnemyController : MonoBehaviour {
             return false;
     }
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start() {
         target = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
@@ -51,7 +68,9 @@ public class EnemyController : MonoBehaviour {
         attackPoint.SetActive(false);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update() {
         attackTimer += Time.deltaTime;
         distance = Vector2.Distance(target.position, transform.position);
@@ -77,6 +96,9 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Wrapper for attack movement.
+    /// </summary>
     public virtual void OrchestrateAttack() {
         if (distance < attackRange && attackTimer > 1.25) {
             StartCoroutine(AttackMovement());
@@ -84,6 +106,10 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Manages the attack and movement timings.
+    /// </summary>
+    /// <returns>return an IEnumerator</returns>
     public virtual IEnumerator AttackMovement() {
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(0.7f);
@@ -102,6 +128,10 @@ public class EnemyController : MonoBehaviour {
         pc.enabled = false;
     }
 
+    /// <summary>
+    /// When the enemy dies, it drops gold, which can be picked up
+    /// by the user.
+    /// </summary>
     void DropGold() {
         int rand = Random.Range(1, 6);
         Vector2 randDirection;
