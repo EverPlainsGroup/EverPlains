@@ -1,0 +1,129 @@
+\hypertarget{class_bat_controller}{}\doxysection{Bat\+Controller Class Reference}
+\label{class_bat_controller}\index{BatController@{BatController}}
+
+
+\mbox{\hyperlink{class_bat_controller}{Bat\+Controller}} is the class that managers the Bat enemy. Like all enemies, it is a child class of \mbox{\hyperlink{class_enemy_controller}{Enemy\+Controller}}.  
+
+
+Inheritance diagram for Bat\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_bat_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bat_controller_a32d7e18937a29763f7739d94b4bfb256}{Bat\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{class_bat_controller}{Bat\+Controller}} class. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_bat_controller_a74bbc5de6d9716bb30fddbfaa6e8ef4d}{Orchestrate\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em Wrapper function for attack movement. \end{DoxyCompactList}\item 
+override IEnumerator \mbox{\hyperlink{class_bat_controller_adf7b761349f41b5951fd9721ccdcc807}{Attack\+Movement}} ()
+\begin{DoxyCompactList}\small\item\em Logic for attack movement based on the Bat enemy\textquotesingle{}s speed and positions. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_bat_controller_ad78abcea4a64bf6e858085a52fd311cd}{Die}} ()
+\begin{DoxyCompactList}\small\item\em Function that gets called when a Bat enemy dies. \end{DoxyCompactList}\item 
+override IEnumerator \mbox{\hyperlink{class_bat_controller_a847d9f235f8919c275693d88b19cb92a}{Damage\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Controls visuals for damage animation. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_bat_controller_acf214b4b2bf323bd86cd1d27bcfba995}{Knock\+Back}} ()
+\begin{DoxyCompactList}\small\item\em Function to calculate knockback velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_bat_controller}{Bat\+Controller}} is the class that managers the Bat enemy. Like all enemies, it is a child class of \mbox{\hyperlink{class_enemy_controller}{Enemy\+Controller}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bat_controller_a32d7e18937a29763f7739d94b4bfb256}\label{class_bat_controller_a32d7e18937a29763f7739d94b4bfb256}} 
+\index{BatController@{BatController}!BatController@{BatController}}
+\index{BatController@{BatController}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{BatController()}{BatController()}}
+{\footnotesize\ttfamily Bat\+Controller.\+Bat\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \mbox{\hyperlink{class_bat_controller}{Bat\+Controller}} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bat_controller_adf7b761349f41b5951fd9721ccdcc807}\label{class_bat_controller_adf7b761349f41b5951fd9721ccdcc807}} 
+\index{BatController@{BatController}!AttackMovement@{AttackMovement}}
+\index{AttackMovement@{AttackMovement}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{AttackMovement()}{AttackMovement()}}
+{\footnotesize\ttfamily override IEnumerator Bat\+Controller.\+Attack\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Logic for attack movement based on the Bat enemy\textquotesingle{}s speed and positions. 
+
+\begin{DoxyReturn}{Returns}
+return IEnumerator
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_enemy_controller_a5c6e3ff7f2f73523f3b2e505efa642ac}{Enemy\+Controller}}.
+
+\mbox{\Hypertarget{class_bat_controller_a847d9f235f8919c275693d88b19cb92a}\label{class_bat_controller_a847d9f235f8919c275693d88b19cb92a}} 
+\index{BatController@{BatController}!DamageAnimation@{DamageAnimation}}
+\index{DamageAnimation@{DamageAnimation}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{DamageAnimation()}{DamageAnimation()}}
+{\footnotesize\ttfamily override IEnumerator Bat\+Controller.\+Damage\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Controls visuals for damage animation. 
+
+\begin{DoxyReturn}{Returns}
+return IEnumerator
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_enemy_controller_af832202758e8af2efb9dbd6f00796d44}{Enemy\+Controller}}.
+
+\mbox{\Hypertarget{class_bat_controller_ad78abcea4a64bf6e858085a52fd311cd}\label{class_bat_controller_ad78abcea4a64bf6e858085a52fd311cd}} 
+\index{BatController@{BatController}!Die@{Die}}
+\index{Die@{Die}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{Die()}{Die()}}
+{\footnotesize\ttfamily override void Bat\+Controller.\+Die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function that gets called when a Bat enemy dies. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_enemy_controller_a92c3f58f663f9cd4732ae346a7405c76}{Enemy\+Controller}}.
+
+\mbox{\Hypertarget{class_bat_controller_acf214b4b2bf323bd86cd1d27bcfba995}\label{class_bat_controller_acf214b4b2bf323bd86cd1d27bcfba995}} 
+\index{BatController@{BatController}!KnockBack@{KnockBack}}
+\index{KnockBack@{KnockBack}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{KnockBack()}{KnockBack()}}
+{\footnotesize\ttfamily override void Bat\+Controller.\+Knock\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Function to calculate knockback velocity. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_enemy_controller_aed86dad55bbc4953f72c4c8a66258dcf}{Enemy\+Controller}}.
+
+\mbox{\Hypertarget{class_bat_controller_a74bbc5de6d9716bb30fddbfaa6e8ef4d}\label{class_bat_controller_a74bbc5de6d9716bb30fddbfaa6e8ef4d}} 
+\index{BatController@{BatController}!OrchestrateAttack@{OrchestrateAttack}}
+\index{OrchestrateAttack@{OrchestrateAttack}!BatController@{BatController}}
+\doxysubsubsection{\texorpdfstring{OrchestrateAttack()}{OrchestrateAttack()}}
+{\footnotesize\ttfamily override void Bat\+Controller.\+Orchestrate\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Wrapper function for attack movement. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_enemy_controller_a1cce2b03c6a65da90fe50ee27fcdbd25}{Enemy\+Controller}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_bat_controller_8cs}{Bat\+Controller.\+cs}}\end{DoxyCompactItemize}
