@@ -1,0 +1,269 @@
+\hypertarget{class_enemy_controller}{}\doxysection{Enemy\+Controller Class Reference}
+\label{class_enemy_controller}\index{EnemyController@{EnemyController}}
+
+
+Class for Enemy Controller, which is the parent class for all enemies in the game.  
+
+
+Inheritance diagram for Enemy\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_enemy_controller}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_controller_a30303d035b7143edccbbec684044a9cf}{Enemy\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{class_enemy_controller}{Enemy\+Controller}} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_controller_a2747bff2fcb7b696fd146b9b68455155}{Get\+Is\+Facing\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Getter and setter for facing\+Right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_controller_a605103f6728c034ab5b84e703b71c302}{Set\+Is\+Facing\+Right}} (bool facing\+Right)
+\item 
+bool \mbox{\hyperlink{class_enemy_controller_a0b764ee55346686f776a745c992b4b8d}{Is\+HPHigh\+Enough}} ()
+\begin{DoxyCompactList}\small\item\em Checks if HP is high enough. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_enemy_controller_a1cce2b03c6a65da90fe50ee27fcdbd25}{Orchestrate\+Attack}} ()
+\begin{DoxyCompactList}\small\item\em Wrapper for attack movement. \end{DoxyCompactList}\item 
+virtual IEnumerator \mbox{\hyperlink{class_enemy_controller_a5c6e3ff7f2f73523f3b2e505efa642ac}{Attack\+Movement}} ()
+\begin{DoxyCompactList}\small\item\em Manages the attack and movement timings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_enemy_controller_a92c3f58f663f9cd4732ae346a7405c76}{Die}} ()
+\item 
+virtual IEnumerator \mbox{\hyperlink{class_enemy_controller_af832202758e8af2efb9dbd6f00796d44}{Damage\+Animation}} ()
+\item 
+virtual void \mbox{\hyperlink{class_enemy_controller_aed86dad55bbc4953f72c4c8a66258dcf}{Knock\+Back}} ()
+\item 
+void \mbox{\hyperlink{class_enemy_controller_a53dab99f15d939d0db4fb2d6e76f350c}{Flip}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Rigidbody2D \mbox{\hyperlink{class_enemy_controller_a1e70803e9c9a68247b86f3947931af10}{rb}}
+\item 
+Sprite\+Renderer \mbox{\hyperlink{class_enemy_controller_a3beb3aa7aa95e974ca4d4f8fcb0cf9a3}{sr}}
+\item 
+Polygon\+Collider2D \mbox{\hyperlink{class_enemy_controller_a8b45485d51e1aa3b928522008e137929}{pc}}
+\item 
+Animator \mbox{\hyperlink{class_enemy_controller_a8eba5438edc982ca7aa19493d0376412}{animator}}
+\item 
+Transform \mbox{\hyperlink{class_enemy_controller_afbbc117acfe3e21a2a82be06fa7314f9}{target}}
+\item 
+float \mbox{\hyperlink{class_enemy_controller_ac40d16e6b75a6a531877d3fad25e770e}{range}} = 0
+\item 
+float \mbox{\hyperlink{class_enemy_controller_a2c5a111549b1d4d9f8141fd4c13bfcd5}{speed}} = 0
+\item 
+int \mbox{\hyperlink{class_enemy_controller_a0019f65ac6625b7dcc0ad909788cdc34}{max\+HP}} = 0
+\item 
+Game\+Object \mbox{\hyperlink{class_enemy_controller_a7a22f3447134d88b1f34459e063250c1}{attack\+Point}}
+\item 
+float \mbox{\hyperlink{class_enemy_controller_afbdd89ee85963218edd758ad2bbb6837}{attack\+Timer}}
+\item 
+Rigidbody2D \mbox{\hyperlink{class_enemy_controller_a98791f29ad44f2cff26d9cc8a3ff29e2}{gold\+Coin}}
+\item 
+float \mbox{\hyperlink{class_enemy_controller_a1d38142ffe989e6d9b0ed46103eeb65c}{distance}}
+\item 
+float \mbox{\hyperlink{class_enemy_controller_af8f1ab45ad11e97192f58ebab2397831}{attack\+Range}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for Enemy Controller, which is the parent class for all enemies in the game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_controller_a30303d035b7143edccbbec684044a9cf}\label{class_enemy_controller_a30303d035b7143edccbbec684044a9cf}} 
+\index{EnemyController@{EnemyController}!EnemyController@{EnemyController}}
+\index{EnemyController@{EnemyController}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{EnemyController()}{EnemyController()}}
+{\footnotesize\ttfamily Enemy\+Controller.\+Enemy\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{class_enemy_controller}{Enemy\+Controller}} class. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_controller_a5c6e3ff7f2f73523f3b2e505efa642ac}\label{class_enemy_controller_a5c6e3ff7f2f73523f3b2e505efa642ac}} 
+\index{EnemyController@{EnemyController}!AttackMovement@{AttackMovement}}
+\index{AttackMovement@{AttackMovement}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{AttackMovement()}{AttackMovement()}}
+{\footnotesize\ttfamily virtual IEnumerator Enemy\+Controller.\+Attack\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Manages the attack and movement timings. 
+
+\begin{DoxyReturn}{Returns}
+return an IEnumerator
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_bat_controller_adf7b761349f41b5951fd9721ccdcc807}{Bat\+Controller}}, and \mbox{\hyperlink{class_mummy_controller_a7854f9a4beeb1ab35cdfddc751b3a5a0}{Mummy\+Controller}}.
+
+\mbox{\Hypertarget{class_enemy_controller_af832202758e8af2efb9dbd6f00796d44}\label{class_enemy_controller_af832202758e8af2efb9dbd6f00796d44}} 
+\index{EnemyController@{EnemyController}!DamageAnimation@{DamageAnimation}}
+\index{DamageAnimation@{DamageAnimation}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{DamageAnimation()}{DamageAnimation()}}
+{\footnotesize\ttfamily virtual IEnumerator Enemy\+Controller.\+Damage\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bat_controller_a847d9f235f8919c275693d88b19cb92a}{Bat\+Controller}}, and \mbox{\hyperlink{class_mummy_controller_aa32fe78ad372f7bc5944ef0702633bbc}{Mummy\+Controller}}.
+
+\mbox{\Hypertarget{class_enemy_controller_a92c3f58f663f9cd4732ae346a7405c76}\label{class_enemy_controller_a92c3f58f663f9cd4732ae346a7405c76}} 
+\index{EnemyController@{EnemyController}!Die@{Die}}
+\index{Die@{Die}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{Die()}{Die()}}
+{\footnotesize\ttfamily virtual void Enemy\+Controller.\+Die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bat_controller_ad78abcea4a64bf6e858085a52fd311cd}{Bat\+Controller}}.
+
+\mbox{\Hypertarget{class_enemy_controller_a53dab99f15d939d0db4fb2d6e76f350c}\label{class_enemy_controller_a53dab99f15d939d0db4fb2d6e76f350c}} 
+\index{EnemyController@{EnemyController}!Flip@{Flip}}
+\index{Flip@{Flip}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{Flip()}{Flip()}}
+{\footnotesize\ttfamily void Enemy\+Controller.\+Flip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_enemy_controller_a2747bff2fcb7b696fd146b9b68455155}\label{class_enemy_controller_a2747bff2fcb7b696fd146b9b68455155}} 
+\index{EnemyController@{EnemyController}!GetIsFacingRight@{GetIsFacingRight}}
+\index{GetIsFacingRight@{GetIsFacingRight}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{GetIsFacingRight()}{GetIsFacingRight()}}
+{\footnotesize\ttfamily bool Enemy\+Controller.\+Get\+Is\+Facing\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter and setter for facing\+Right. 
+
+\begin{DoxyReturn}{Returns}
+return a boolean
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_controller_a0b764ee55346686f776a745c992b4b8d}\label{class_enemy_controller_a0b764ee55346686f776a745c992b4b8d}} 
+\index{EnemyController@{EnemyController}!IsHPHighEnough@{IsHPHighEnough}}
+\index{IsHPHighEnough@{IsHPHighEnough}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{IsHPHighEnough()}{IsHPHighEnough()}}
+{\footnotesize\ttfamily bool Enemy\+Controller.\+Is\+HPHigh\+Enough (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if HP is high enough. 
+
+\begin{DoxyReturn}{Returns}
+return a boolean
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_controller_aed86dad55bbc4953f72c4c8a66258dcf}\label{class_enemy_controller_aed86dad55bbc4953f72c4c8a66258dcf}} 
+\index{EnemyController@{EnemyController}!KnockBack@{KnockBack}}
+\index{KnockBack@{KnockBack}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{KnockBack()}{KnockBack()}}
+{\footnotesize\ttfamily virtual void Enemy\+Controller.\+Knock\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bat_controller_acf214b4b2bf323bd86cd1d27bcfba995}{Bat\+Controller}}.
+
+\mbox{\Hypertarget{class_enemy_controller_a1cce2b03c6a65da90fe50ee27fcdbd25}\label{class_enemy_controller_a1cce2b03c6a65da90fe50ee27fcdbd25}} 
+\index{EnemyController@{EnemyController}!OrchestrateAttack@{OrchestrateAttack}}
+\index{OrchestrateAttack@{OrchestrateAttack}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{OrchestrateAttack()}{OrchestrateAttack()}}
+{\footnotesize\ttfamily virtual void Enemy\+Controller.\+Orchestrate\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Wrapper for attack movement. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_bat_controller_a74bbc5de6d9716bb30fddbfaa6e8ef4d}{Bat\+Controller}}, and \mbox{\hyperlink{class_mummy_controller_a2c34214c9d9e536926e29614588ff3a5}{Mummy\+Controller}}.
+
+\mbox{\Hypertarget{class_enemy_controller_a605103f6728c034ab5b84e703b71c302}\label{class_enemy_controller_a605103f6728c034ab5b84e703b71c302}} 
+\index{EnemyController@{EnemyController}!SetIsFacingRight@{SetIsFacingRight}}
+\index{SetIsFacingRight@{SetIsFacingRight}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{SetIsFacingRight()}{SetIsFacingRight()}}
+{\footnotesize\ttfamily void Enemy\+Controller.\+Set\+Is\+Facing\+Right (\begin{DoxyParamCaption}\item[{bool}]{facing\+Right }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_enemy_controller_a8eba5438edc982ca7aa19493d0376412}\label{class_enemy_controller_a8eba5438edc982ca7aa19493d0376412}} 
+\index{EnemyController@{EnemyController}!animator@{animator}}
+\index{animator@{animator}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{animator}{animator}}
+{\footnotesize\ttfamily Animator Enemy\+Controller.\+animator}
+
+\mbox{\Hypertarget{class_enemy_controller_a7a22f3447134d88b1f34459e063250c1}\label{class_enemy_controller_a7a22f3447134d88b1f34459e063250c1}} 
+\index{EnemyController@{EnemyController}!attackPoint@{attackPoint}}
+\index{attackPoint@{attackPoint}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{attackPoint}{attackPoint}}
+{\footnotesize\ttfamily Game\+Object Enemy\+Controller.\+attack\+Point}
+
+\mbox{\Hypertarget{class_enemy_controller_af8f1ab45ad11e97192f58ebab2397831}\label{class_enemy_controller_af8f1ab45ad11e97192f58ebab2397831}} 
+\index{EnemyController@{EnemyController}!attackRange@{attackRange}}
+\index{attackRange@{attackRange}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{attackRange}{attackRange}}
+{\footnotesize\ttfamily float Enemy\+Controller.\+attack\+Range}
+
+\mbox{\Hypertarget{class_enemy_controller_afbdd89ee85963218edd758ad2bbb6837}\label{class_enemy_controller_afbdd89ee85963218edd758ad2bbb6837}} 
+\index{EnemyController@{EnemyController}!attackTimer@{attackTimer}}
+\index{attackTimer@{attackTimer}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{attackTimer}{attackTimer}}
+{\footnotesize\ttfamily float Enemy\+Controller.\+attack\+Timer}
+
+\mbox{\Hypertarget{class_enemy_controller_a1d38142ffe989e6d9b0ed46103eeb65c}\label{class_enemy_controller_a1d38142ffe989e6d9b0ed46103eeb65c}} 
+\index{EnemyController@{EnemyController}!distance@{distance}}
+\index{distance@{distance}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{distance}{distance}}
+{\footnotesize\ttfamily float Enemy\+Controller.\+distance}
+
+\mbox{\Hypertarget{class_enemy_controller_a98791f29ad44f2cff26d9cc8a3ff29e2}\label{class_enemy_controller_a98791f29ad44f2cff26d9cc8a3ff29e2}} 
+\index{EnemyController@{EnemyController}!goldCoin@{goldCoin}}
+\index{goldCoin@{goldCoin}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{goldCoin}{goldCoin}}
+{\footnotesize\ttfamily Rigidbody2D Enemy\+Controller.\+gold\+Coin}
+
+\mbox{\Hypertarget{class_enemy_controller_a0019f65ac6625b7dcc0ad909788cdc34}\label{class_enemy_controller_a0019f65ac6625b7dcc0ad909788cdc34}} 
+\index{EnemyController@{EnemyController}!maxHP@{maxHP}}
+\index{maxHP@{maxHP}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{maxHP}{maxHP}}
+{\footnotesize\ttfamily int Enemy\+Controller.\+max\+HP = 0}
+
+\mbox{\Hypertarget{class_enemy_controller_a8b45485d51e1aa3b928522008e137929}\label{class_enemy_controller_a8b45485d51e1aa3b928522008e137929}} 
+\index{EnemyController@{EnemyController}!pc@{pc}}
+\index{pc@{pc}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{pc}{pc}}
+{\footnotesize\ttfamily Polygon\+Collider2D Enemy\+Controller.\+pc}
+
+\mbox{\Hypertarget{class_enemy_controller_ac40d16e6b75a6a531877d3fad25e770e}\label{class_enemy_controller_ac40d16e6b75a6a531877d3fad25e770e}} 
+\index{EnemyController@{EnemyController}!range@{range}}
+\index{range@{range}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily float Enemy\+Controller.\+range = 0}
+
+\mbox{\Hypertarget{class_enemy_controller_a1e70803e9c9a68247b86f3947931af10}\label{class_enemy_controller_a1e70803e9c9a68247b86f3947931af10}} 
+\index{EnemyController@{EnemyController}!rb@{rb}}
+\index{rb@{rb}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{rb}{rb}}
+{\footnotesize\ttfamily Rigidbody2D Enemy\+Controller.\+rb}
+
+\mbox{\Hypertarget{class_enemy_controller_a2c5a111549b1d4d9f8141fd4c13bfcd5}\label{class_enemy_controller_a2c5a111549b1d4d9f8141fd4c13bfcd5}} 
+\index{EnemyController@{EnemyController}!speed@{speed}}
+\index{speed@{speed}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Enemy\+Controller.\+speed = 0}
+
+\mbox{\Hypertarget{class_enemy_controller_a3beb3aa7aa95e974ca4d4f8fcb0cf9a3}\label{class_enemy_controller_a3beb3aa7aa95e974ca4d4f8fcb0cf9a3}} 
+\index{EnemyController@{EnemyController}!sr@{sr}}
+\index{sr@{sr}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{sr}{sr}}
+{\footnotesize\ttfamily Sprite\+Renderer Enemy\+Controller.\+sr}
+
+\mbox{\Hypertarget{class_enemy_controller_afbbc117acfe3e21a2a82be06fa7314f9}\label{class_enemy_controller_afbbc117acfe3e21a2a82be06fa7314f9}} 
+\index{EnemyController@{EnemyController}!target@{target}}
+\index{target@{target}!EnemyController@{EnemyController}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily Transform Enemy\+Controller.\+target}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_enemy_controller_8cs}{Enemy\+Controller.\+cs}}\end{DoxyCompactItemize}
